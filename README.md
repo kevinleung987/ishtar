@@ -26,6 +26,18 @@ npm start
 * Market REST endpoint `curl http://localhost:3000/api/market`
     * getPrice - Get Jita market values of search results
    
+### .env specification
+* A .env file in the root directory is required for this microservice to run.
+```
+APP_ID=ishtar-eve
+PORT=3000
+LOG_LEVEL=debug
+REQUEST_LIMIT=100kb
+SESSION_SECRET=mySecret
+
+#Swagger
+SWAGGER_API_SPEC=/spec
+```
 Built on the express-no-stress template:
 https://github.com/cdimascio/generator-express-no-stress
 
