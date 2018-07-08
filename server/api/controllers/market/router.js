@@ -5,7 +5,7 @@ import controller from './controller';
 
 export default express
   .Router()
-  .get('/getPrice', controller.getPrice)
+  .get('/price', controller.price)
   .get('/test', (req, res) => {
     const requestList = [];
 
