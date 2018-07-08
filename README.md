@@ -51,7 +51,8 @@ npm start
 ### Trying it out
 * Swagger interface available at [http://localhost:3000/spec](http://localhost:3000/spec)
 * Market REST endpoint `curl http://localhost:3000/api/market`
-    * /price - Get Jita market values of search results
+    * /priceByName - Get Jita market min/max/avg price of search results
+    * /priceById - Get Jita market min/max/avg price of a specific typeID
    
 ### .env specification
 * A .env file in the root directory is required for this microservice to run.

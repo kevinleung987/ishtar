@@ -33,7 +33,7 @@ class MarketService {
     return price;
   }
 
-  getPrice(name, strict) {
+  getPriceByName(name, strict) {
     return EveService.search(name, strict).then(searchJSON => {
       const itemList = [];
       for (let i = 0; i < searchJSON.inventory_type.length; i += 1) {
@@ -58,6 +58,10 @@ class MarketService {
       }
       return Promise.all(itemList);
     });
+  }
+  getPriceById(id) {
+    // Get Price of the item
+    return EveService.orders(id).then(priceJSON => this.calculatePrice(priceJSON));
   }
 }
 
