@@ -14,8 +14,16 @@ curl -X GET 'http://localhost:3000/api/market/price?name=vexor%20navy%20issue&st
         "name": "Vexor Navy Issue",
         "group_id": 26,
         "price": {
-            "sell": 98493824.99,
-            "buy": 90000239.43
+            "sell": {
+                "min": 98490973.5,
+                "max": 988888888.42,
+                "avg": 123374035.97846146
+            },
+            "buy": {
+                "min": 198.94,
+                "max": 90000239.43,
+                "avg": 75047825.20419355
+            }
         }
     }
 ]
