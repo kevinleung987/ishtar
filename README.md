@@ -66,6 +66,11 @@ SESSION_SECRET=mySecret
 #Swagger
 SWAGGER_API_SPEC=/spec
 ```
+### Docker
+A docker file is provided to easily deploy this service into production.
+```
+docker build -t tag/ishtar-eve .
+```
 License
 ----
 MIT
