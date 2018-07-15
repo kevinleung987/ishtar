@@ -18,16 +18,16 @@
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "source-map-support": "^0.5.4",
-    "swagger-express-middleware": "^1.0.0-alpha.12"
+    "swagger-express-middleware": "^1.0.0-alpha.12",
+    "backpack-core": "^0.7.0",
+    "shelljs": "^0.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "babel-preset-env": "^1.6.1",
-    "backpack-core": "^0.7.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.7.0",
-    "prettier-eslint": "^8.8.2",
-    "shelljs": "^0.8.1"
+    "prettier-eslint": "^8.8.2"
   }
 }
