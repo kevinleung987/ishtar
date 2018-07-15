@@ -2,6 +2,11 @@
   "name": "ishtar-eve",
   "version": "0.1.0",
   "description": "EVE Microservice for Ishtar consumption",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinleung987/ishtar-eve.git"
+  },
   "main": "index.js",
   "scripts": {
     "start": "cd build && node main | pino -o 'short'",
