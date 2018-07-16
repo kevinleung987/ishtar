@@ -5,10 +5,8 @@ info:
   description: EVE Microservice for Ishtar consumption
 basePath: /api/v1
 tags:
-  - name: Examples
-    description: Simple example endpoints
-  - name: Specification
-    description: The swagger API specification
+  - name: Market
+    description: EVE Market endpoints
 
 consumes:
   - application/json
@@ -17,55 +15,97 @@ produces:
 
 
 definitions:
-  ExampleBody:
+  Price:
     type: object
-    title: example
+    title: Price Result
     required:
-      - name
+      - min
+      - max
+      - avg
     properties:
+      min:
+        type: integer
+      max:
+        type: integer
+      avg:
+        type: integer
+  PriceContainer:
+    type: object
+    title: Group of Sell/Buy Prices
+    required:
+      - sell
+      - buy
+    properties:
+      sell:
+        $ref: "#/definitions/Price"
+      buy:
+        $ref: "#/definitions/Price"
+  MarketResult:
+    type: object
+    title: Market Price Result
+    required:
+      - id
+      - name
+      - group_id
+      - price
+    properties:
+      id:
+        type: integer
       name:
         type: string
-        example: no_stress
+      group_id:
+        type: integer
+      price:
+        $ref: "#/definitions/PriceContainer"
+  
+
 
 paths:
-  /examples:
+  /name:
     get:
       tags:
-        - Examples
-      description: Fetch all examples
-      responses:
-        200:
-          description: Returns all examples
-    post:
-      tags:
-        - Examples
-      description: Create a new example
+        - Market
+      description: Look up the price of an item by it's name
       parameters:
-        - name: example
-          in: body
-          description: an example
-          required: true
-          schema: 
-            $ref: "#/definitions/ExampleBody"
-      responses:
-        200:
-          description: Returns all examples
-
-  /examples/{id}:
-    get:
-      tags:
-        - Examples
-      parameters:
-        - name: id
+        - name: name
+          example: Vexor Navy Issue
           in: path
           required: true
-          description: The id of the example to retrieve
+          description: The Name of the item
+          type: string
+        - name: strict
+          example: true
+          in: path
+          required: false
+          description: Decides whether to use a strict search
+          type: boolean
+      responses:
+        200:
+          description: Return an array of Market Results with all search results and their prices.
+          schema: 
+            $ref: "#/definitions/MarketResult"
+
+  /id:
+    get:
+      tags:
+        - Market
+      description: Look up the price of an item by it's id
+      parameters:
+        - name: id
+          example: 17843
+          in: path
+          required: true
+          description: The type ID of the item
           type: integer
       responses:
         200:
           description: Return the example with the specified id
-        404:
-          description: Example not found
+          schema: 
+            $ref: "#/definitions/Price"
+        400:
+          description: No item by that typeid could be found
+        500:
+          description: Some internal error has occured
 
   /spec:
     get:
