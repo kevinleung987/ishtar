@@ -1,20 +1,27 @@
 import request from 'request-promise';
 
+
 class EveService {
-  search(name, strict) {
+  search(name, strict, category) {
     const options = {
       method: 'GET',
       url: 'https://esi.evetech.net/latest/search/',
       qs:
      {
-       categories: 'inventory_type',
+       categories: String(category),
        datasource: 'tranquility',
        language: 'en-us',
        search: name,
        strict: String(strict),
      },
     };
-    return request(options).then(res => JSON.parse(res));
+
+    return request(options).then(res => {
+      if (res.length === 2) {
+        throw new Error('no search results');
+      }
+      return JSON.parse(res);
+    });
   }
 
   types(typeID) {
@@ -37,6 +44,14 @@ class EveService {
        page: '1',
        type_id: typeID,
      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
+  eveScout() {
+    const options = {
+      method: 'GET',
+      url: 'https://www.eve-scout.com/api/wormholes',
     };
     return request(options).then(res => JSON.parse(res));
   }

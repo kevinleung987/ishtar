@@ -1,6 +1,6 @@
 {
   "name": "ishtar-eve",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "EVE Microservice for Ishtar consumption",
   "license": "MIT",
   "repository": {
@@ -20,7 +20,7 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
-    "pino": "^4.17.3",
+    "pino": "^4.17.5",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "shelljs": "^0.8.1",

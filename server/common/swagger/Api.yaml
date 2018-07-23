@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: ishtar-eve
   description: EVE Microservice for Ishtar consumption
-basePath: /api/v1
+basePath: /api
 tags:
   - name: Market
     description: EVE Market endpoints
@@ -61,23 +61,21 @@ definitions:
 
 
 paths:
-  /name:
+  /market/price/name:
     get:
       tags:
         - Market
-      description: Look up the price of an item by it's name
+      description: Look up the price of an item by it's name.
       parameters:
         - name: name
-          example: Vexor Navy Issue
-          in: path
+          in: query
           required: true
-          description: The Name of the item
+          description: The Name of the item.
           type: string
         - name: strict
-          example: true
-          in: path
+          in: query
           required: false
-          description: Decides whether to use a strict search
+          description: Decides whether to use a strict search.
           type: boolean
       responses:
         200:
@@ -85,27 +83,47 @@ paths:
           schema: 
             $ref: "#/definitions/MarketResult"
 
-  /id:
+  /market/price/id:
     get:
       tags:
         - Market
-      description: Look up the price of an item by it's id
+      description: Look up the price of an item by it's id.
       parameters:
         - name: id
-          example: 17843
-          in: path
+          in: query
           required: true
-          description: The type ID of the item
+          description: The type ID of the item.
           type: integer
       responses:
         200:
-          description: Return the example with the specified id
+          description: Return the example with the specified id.
           schema: 
             $ref: "#/definitions/Price"
         400:
-          description: No item by that typeid could be found
+          description: No item by that typeid could be found.
         500:
-          description: Some internal error has occured
+          description: Some internal error has occured.
+
+  /wormhole/thera:
+    get:
+      tags:
+        - Wormhole
+      description: Get the nearest thera entrance
+      parameters:
+        - name: systemName
+          in: query
+          required: true
+          description: The name of the system.
+          type: string
+      responses:
+        200:
+          description: Return the nearest Thera entrance to the system.
+          schema: 
+            $ref: "#/definitions/Price"
+        400:
+          description: Invalid system name.
+        500:
+          description: Some internal error has occured.
 
   /spec:
     get:

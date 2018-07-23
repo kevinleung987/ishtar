@@ -1,7 +1,7 @@
 import l from '../../../common/logger';
-import MarketService from '../../services/market/market.service';
+import MarketService from '../../services/market.service';
 
-export class Controller {
+export class MarketController {
   priceByName(req, res, next) {
     l.info('Received price by name request');
     MarketService.getPriceByName(req.query.name, req.query.strict)
@@ -15,4 +15,4 @@ export class Controller {
       .catch(error => next(error));
   }
 }
-export default new Controller();
+export default new MarketController();

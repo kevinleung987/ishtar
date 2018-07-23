@@ -1,7 +1,7 @@
-import EveService from '../eve/eve.service';
+import EveService from './eve.service';
 
 class MarketService {
-  calculatePrice(json) {
+  calculatePrice(priceJSON) {
     const price = {
       sell: { min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY, avg: 0 },
       buy: { min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY, avg: 0 },
@@ -9,7 +9,7 @@ class MarketService {
     let numSell = 0;
     let numBuy = 0;
     // Calculate the min, max, average sell and buy order prices
-    json.forEach(element => {
+    priceJSON.forEach(element => {
       if (element.is_buy_order === false) {
         numSell += 1;
         price.sell.avg += element.price;
@@ -34,7 +34,7 @@ class MarketService {
   }
 
   getPriceByName(name, strict) {
-    return EveService.search(name, strict).then(searchJSON => {
+    return EveService.search(name, strict, 'inventory_type').then(searchJSON => {
       const itemList = [];
       for (let i = 0; i < searchJSON.inventory_type.length; i += 1) {
         const requestList = [];
