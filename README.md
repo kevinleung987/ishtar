@@ -53,19 +53,10 @@ npm start
 * Market REST endpoint `curl http://localhost:3000/api/market`
     * /priceByName - Get Jita market min/max/avg price of search results
     * /priceById - Get Jita market min/max/avg price of a specific typeID
-   
-### .env specification
-* A .env file in the root directory is required for this microservice to run.
-```
-APP_ID=ishtar-eve
-PORT=3000
-LOG_LEVEL=debug
-REQUEST_LIMIT=100kb
-SESSION_SECRET=mySecret
 
-#Swagger
-SWAGGER_API_SPEC=/spec
-```
+### .env specification
+* A .env file in the root directory is required for this service to be run. An example can be found in `.env.example`.
+
 ### Docker
 A docker file is provided to easily deploy this service into production.
 ```
