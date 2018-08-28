@@ -57,6 +57,21 @@ class EveService {
     return request(options).then(res => JSON.parse(res));
   }
 
+  routes(src, dest, flag) {
+    const options = {
+      method: 'GET',
+      uri: `https://esi.evetech.net/latest/route/${(src)}/${(dest)}`,
+      qs: {
+        datasource: 'tranquility',
+        flag,
+      },
+      headers: {
+        'User-Agent': process.env.USER_AGENT,
+      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
   eveScout() {
     const options = {
       method: 'GET',

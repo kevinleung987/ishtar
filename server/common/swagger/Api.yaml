@@ -7,6 +7,10 @@ basePath: /api
 tags:
   - name: Market
     description: EVE Market endpoints
+  - name: Wormhole
+    description: EVE Wormhole endpoints
+  - name: Specification
+    description: API specification
 
 consumes:
   - application/json
@@ -57,6 +61,29 @@ definitions:
         type: integer
       price:
         $ref: "#/definitions/PriceContainer"
+  TheraResponse:
+    type: object
+    title: Closest Thera Entrance
+    required:
+      - jumps
+      - system
+      - security
+      - region
+      - theraSide
+      - systemSide
+    properties:
+      jumps:
+        type: string
+      name:
+        type: string
+      security:
+        type: integer
+      region:
+        type: string
+      theraSide:
+        type: string
+      systemSide:
+        type: string
   
 
 
@@ -119,7 +146,7 @@ paths:
         200:
           description: Return the nearest Thera entrance to the system.
           schema: 
-            $ref: "#/definitions/Price"
+            $ref: "#/definitions/TheraResponse"
         400:
           description: Invalid system name.
         500:
