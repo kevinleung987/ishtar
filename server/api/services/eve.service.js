@@ -72,6 +72,20 @@ class EveService {
     return request(options).then(res => JSON.parse(res));
   }
 
+  characters(id) {
+    const options = {
+      method: 'GET',
+      uri: `https://esi.tech.ccp.is/latest/characters/${(id)}`,
+      qs: {
+        datasource: 'tranquility',
+      },
+      headers: {
+        'User-Agent': process.env.USER_AGENT,
+      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
   eveScout() {
     const options = {
       method: 'GET',

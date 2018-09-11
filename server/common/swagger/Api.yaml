@@ -9,6 +9,8 @@ tags:
     description: EVE Market endpoints
   - name: Wormhole
     description: EVE Wormhole endpoints
+  - name: Whois
+    description: EVE Whois endpoints
   - name: Specification
     description: API specification
 
@@ -149,6 +151,27 @@ paths:
             $ref: "#/definitions/TheraResponse"
         400:
           description: Invalid system name.
+        500:
+          description: Some internal error has occured.
+
+  /whois:
+    get:
+      tags:
+        - Whois
+      description: Get information about a player charcter.
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: The name of the character.
+          type: string
+      responses:
+        200:
+          description: Return information about the player character.
+          schema: 
+            $ref: "#/definitions/TheraResponse"
+        400:
+          description: Invalid name.
         500:
           description: Some internal error has occured.
 
