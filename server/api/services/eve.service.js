@@ -86,10 +86,49 @@ class EveService {
     return request(options).then(res => JSON.parse(res));
   }
 
+  alliances(id) {
+    const options = {
+      method: 'GET',
+      uri: `https://esi.tech.ccp.is/latest/alliances/${(id)}`,
+      qs: {
+        datasource: 'tranquility',
+      },
+      headers: {
+        'User-Agent': process.env.USER_AGENT,
+      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
+  corporations(id) {
+    const options = {
+      method: 'GET',
+      uri: `https://esi.tech.ccp.is/latest/corporations/${(id)}`,
+      qs: {
+        datasource: 'tranquility',
+      },
+      headers: {
+        'User-Agent': process.env.USER_AGENT,
+      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
   eveScout() {
     const options = {
       method: 'GET',
       uri: 'https://www.eve-scout.com/api/wormholes',
+      headers: {
+        'User-Agent': process.env.USER_AGENT,
+      },
+    };
+    return request(options).then(res => JSON.parse(res));
+  }
+
+  zkill(id) {
+    const options = {
+      method: 'GET',
+      uri: `https://zkillboard.com/api/stats/characterID/${id}/`,
       headers: {
         'User-Agent': process.env.USER_AGENT,
       },

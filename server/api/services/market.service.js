@@ -42,11 +42,9 @@ class MarketService {
           id: searchJSON.inventory_type[i], name: null, group_id: null, price: null,
         };
           // Get Name of the item
-        requestList.push(EveService.types(searchJSON.inventory_type[i]).then(nameJSON =>
-          ({ name: nameJSON.name, group_id: nameJSON.group_id })));
+        requestList.push(EveService.types(searchJSON.inventory_type[i]).then(nameJSON => ({ name: nameJSON.name, group_id: nameJSON.group_id })));
         // Get Price of the item
-        requestList.push(EveService.orders(searchJSON.inventory_type[i]).then(priceJSON =>
-          this.calculatePrice(priceJSON)));
+        requestList.push(EveService.orders(searchJSON.inventory_type[i]).then(priceJSON => this.calculatePrice(priceJSON)));
         // Once both requests have finished, assemble the item object
         itemList.push(Promise.all(requestList).then(response => {
           const [typeInfo, itemPrice] = response;
@@ -59,6 +57,7 @@ class MarketService {
       return Promise.all(itemList);
     });
   }
+
   getPriceById(id) {
     // Get Price of the item
     return EveService.orders(id).then(priceJSON => this.calculatePrice(priceJSON));
