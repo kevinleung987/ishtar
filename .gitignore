@@ -1,4 +1,12 @@
 node_modules
-build
+public
+.tmp
+.idea
+.log
+dist
+docs
 .env
-.vscode
+npm-debug.log
+.nyc_output
+coverage
+cassettes
