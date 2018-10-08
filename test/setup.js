@@ -1,9 +1,11 @@
-import { EventEmitter } from 'events'
+import {
+  EventEmitter
+} from 'events'
 import MongodbMemoryServer from 'mongodb-memory-server'
 import mongoose from '../src/services/mongoose'
 
 EventEmitter.defaultMaxListeners = Infinity
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
 
 global.Array = Array
 global.Date = Date
@@ -37,7 +39,9 @@ afterAll(async () => {
 })
 
 afterEach(async () => {
-  const { collections } = mongoose.connection
+  const {
+    collections
+  } = mongoose.connection
   const promises = []
   Object.keys(collections).forEach((collection) => {
     promises.push(collections[collection].remove())
