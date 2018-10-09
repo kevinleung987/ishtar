@@ -23,11 +23,12 @@ const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
     root: path.join(__dirname, '..'),
-    port: process.env.PORT || process.env.PORT,
+    port: process.env.PORT || 3000,
     ip: process.env.IP || '0.0.0.0',
     apiRoot: process.env.API_ROOT || '',
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
+    userAgent: process.env.USER_AGENT || 'Ishtar',
     mongo: {
       options: {
         db: {
