@@ -1,8 +1,8 @@
-# ishtar-eve
+# ishtar
 
-Full-Stack Discord bot in development. This repo is only the back-end service for Ishtar.
+Full-Stack bot framework in development. The idea is to use Ishtar as a back-end service for a Web GUI, and chat-bots written in any language targetting any chatting platform like Discord or Slack. A Discord bot written in Python using Ishtar as a back-end is currently being re-written, will be added to the repo when the rewrite is complete.
 
-This back-end service serves mainly as a wrapper for the EVE Online API, and also has a content curation feature, other features to come.
+The back-end service currently serves mainly as a wrapper for the EVE Online API.
 
 MongoDB is required for persistent storage.
 
@@ -70,7 +70,9 @@ A docker file is provided to easily deploy this service into production.
 docker build -t {NAME} .
 docker run -p 3000:3000 --name {NAME} -d {NAME}:latest
 ```
+
 Server scaffolding and boilerplate provided by [generator-rest](https://github.com/diegohaz/rest)
+
 License
 ----
 MIT
