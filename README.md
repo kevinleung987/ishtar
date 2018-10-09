@@ -5,7 +5,7 @@ This service serves as a wrapper for the ESI API, allowing Ishtar to get useful 
 
 ## Example Usage
 ```
-curl -X GET 'http://localhost:3000/api/market/price?name=vexor%20navy%20issue&strict=true'
+curl -X GET 'http://localhost:3000/market/price?name=vexor%20navy%20issue&strict=true'
 ```
 ```json
 [
@@ -35,6 +35,10 @@ npm install
 ```
 
 ## Running
+### Viewing the Docs:
+```
+npm run docs
+```
 #### *Development* mode:
 
 ```
@@ -44,15 +48,15 @@ npm run dev
 #### *Production* mode:
 
 ```
-npm run compile
-npm start
+npm run prod
 ```
 
 ### Trying it out
-* Swagger interface available at [http://localhost:3000/spec](http://localhost:3000/spec)
-* Market REST endpoint `curl http://localhost:3000/api/market`
-    * /priceByName - Get Jita market min/max/avg price of search results
-    * /priceById - Get Jita market min/max/avg price of a specific typeID
+* View the docs by running `npm run docs`
+* Create a .env file to provide environment variables for the service.
+* Create a user using your Master Key via a POST request to the /users/ route, more details are available in the docs. (optional)
+* Get a auth token via a POST request to the /auth/ route, more details are available in the docs. (optional)
+* Begin using Ishtar.
 
 ### .env specification
 * A .env file in the root directory is required for this service to be run. An example can be found in `.env.example`.
@@ -60,7 +64,8 @@ npm start
 ### Docker
 A docker file is provided to easily deploy this service into production.
 ```
-docker build -t tag/ishtar-eve .
+docker build -t {NAME} .
+docker run -p 3000:3000 --name {NAME} -d {NAME}:latest
 ```
 License
 ----
