@@ -1,7 +1,10 @@
 # ishtar-eve
 
-EVE Online Microservice for Ishtar, a full-stack Discord bot in development.
-This service serves as a wrapper for the ESI API, allowing Ishtar to get useful information out of the ESI api without much work.
+Full-Stack Discord bot in development. This repo is only the back-end service for Ishtar.
+
+This back-end service serves mainly as a wrapper for the EVE Online API, and also has a content curation feature, other features to come.
+
+MongoDB is required for persistent storage.
 
 ## Example Usage
 ```
@@ -29,13 +32,13 @@ curl -X GET 'http://localhost:3000/market/price?name=vexor%20navy%20issue&strict
 ]
 ```
 
-## Installing
+### Installing
 ```
 npm install
 ```
 
-## Running
 ### Viewing the Docs:
+Available in `DOCS.md`, you can also generate them yourself with:
 ```
 npm run docs
 ```
@@ -52,7 +55,7 @@ npm run prod
 ```
 
 ### Trying it out
-* View the docs by running `npm run docs`
+* View the docs by running `npm run docs` or by checking out `DOCS.md`
 * Create a .env file to provide environment variables for the service.
 * Create a user using your Master Key via a POST request to the /users/ route, more details are available in the docs. (optional)
 * Get a auth token via a POST request to the /auth/ route, more details are available in the docs. (optional)

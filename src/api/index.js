@@ -3,9 +3,9 @@ import {
 } from 'express'
 import user from './user'
 import auth from './auth'
-import market from './market/router'
-import wormhole from './wormhole/router'
-import whois from './whois/router'
+import market from './market'
+import wormhole from './wormhole'
+import whois from './whois'
 const router = new Router()
 
 /**
