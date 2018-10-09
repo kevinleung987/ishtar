@@ -1,4 +1,8 @@
 import request from 'request-promise'
+import {
+  userAgent,
+  language
+} from '../config'
 
 class EveService {
   search (name, strict, category) {
@@ -8,12 +12,12 @@ class EveService {
       qs: {
         categories: String(category),
         datasource: 'tranquility',
-        language: 'en-us',
+        language: language,
         search: name,
         strict: String(strict)
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => {
@@ -30,10 +34,10 @@ class EveService {
       uri: `https://esi.evetech.net/latest/universe/types/${typeID}`,
       qs: {
         datasource: 'tranquility',
-        language: 'en-us'
+        language: language
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -50,7 +54,7 @@ class EveService {
         type_id: typeID
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -65,7 +69,7 @@ class EveService {
         flag
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -79,7 +83,7 @@ class EveService {
         datasource: 'tranquility'
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -93,7 +97,7 @@ class EveService {
         datasource: 'tranquility'
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -107,7 +111,7 @@ class EveService {
         datasource: 'tranquility'
       },
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -118,7 +122,7 @@ class EveService {
       method: 'GET',
       uri: 'https://www.eve-scout.com/api/wormholes',
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))
@@ -129,7 +133,7 @@ class EveService {
       method: 'GET',
       uri: `https://zkillboard.com/api/stats/characterID/${id}/`,
       headers: {
-        'User-Agent': process.env.USER_AGENT
+        'User-Agent': userAgent
       }
     }
     return request(options).then(res => JSON.parse(res))

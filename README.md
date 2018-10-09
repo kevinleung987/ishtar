@@ -70,6 +70,7 @@ A docker file is provided to easily deploy this service into production.
 docker build -t {NAME} .
 docker run -p 3000:3000 --name {NAME} -d {NAME}:latest
 ```
+Server scaffolding and boilerplate provided by [generator-rest](https://github.com/diegohaz/rest)
 License
 ----
 MIT

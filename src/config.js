@@ -29,6 +29,7 @@ const config = {
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
     userAgent: process.env.USER_AGENT || 'Ishtar',
+    language: 'en-us',
     mongo: {
       options: {
         db: {
