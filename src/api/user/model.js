@@ -1,8 +1,12 @@
 import crypto from 'crypto'
-import bcrypt from 'bcrypt'
-import mongoose, { Schema } from 'mongoose'
+import bcrypt from 'bcryptjs'
+import mongoose, {
+  Schema
+} from 'mongoose'
 import mongooseKeywords from 'mongoose-keywords'
-import { env } from '../../config'
+import {
+  env
+} from '../../config'
 
 const roles = ['user', 'admin']
 
@@ -72,7 +76,9 @@ userSchema.methods = {
       fields = [...fields, 'email', 'createdAt']
     }
 
-    fields.forEach((field) => { view[field] = this[field] })
+    fields.forEach((field) => {
+      view[field] = this[field]
+    })
 
     return view
   },
@@ -86,7 +92,9 @@ userSchema.statics = {
   roles
 }
 
-userSchema.plugin(mongooseKeywords, { paths: ['email', 'name'] })
+userSchema.plugin(mongooseKeywords, {
+  paths: ['email', 'name']
+})
 
 const model = mongoose.model('User', userSchema)
 

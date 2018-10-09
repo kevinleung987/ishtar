@@ -16,3 +16,4 @@ env:
   - MASTER_KEY=masterKey
   - JWT_SECRET=jwtSecret
   - USER_AGENT=Ishtar
+  - PORT=3000

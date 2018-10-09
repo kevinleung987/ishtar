@@ -1,8 +1,8 @@
-FROM node:10.11.0-alpine
-ENV NODE_ENV production
+FROM node:10-jessie
+#ENV NODE_ENV production
 WORKDIR /usr/src/app
 COPY ["package*.json", "./"]
-RUN npm install --production
+RUN npm install
 COPY . .
 EXPOSE 3000
-CMD npm run prod
+CMD npm install -g nodemon && npm run dev
