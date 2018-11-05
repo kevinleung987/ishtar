@@ -44,14 +44,8 @@ class MarketService {
   getPriceByName (name, strict) {
     return EveService.search(name, strict, 'inventory_type').then(searchJSON => {
       const itemList = []
-      for (let i = 0; i < searchJSON.inventory_type.length; i += 1) {
+      for (let i = 0; i < searchJSON['inventory_type'].length; i++) {
         const requestList = []
-        const item = {
-          id: searchJSON.inventory_type[i],
-          name: null,
-          group_id: null,
-          price: null
-        }
         // Get Name of the item
         requestList.push(EveService.types(searchJSON.inventory_type[i]).then(nameJSON => ({
           name: nameJSON.name,
@@ -62,9 +56,12 @@ class MarketService {
         // Once both requests have finished, assemble the item object
         itemList.push(Promise.all(requestList).then(response => {
           const [typeInfo, itemPrice] = response
-          item.name = typeInfo.name
-          item.group_id = typeInfo.group_id
-          item.price = itemPrice
+          const item = {
+            id: searchJSON.inventory_type[i],
+            name: typeInfo.name,
+            group_id: typeInfo.group_id,
+            price: itemPrice
+          }
           return item
         }))
       }
