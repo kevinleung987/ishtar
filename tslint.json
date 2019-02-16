@@ -10,6 +10,17 @@
       "spaces",
       2
     ],
-  },
-  "rulesDirectory": []
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "ordered-imports": true,
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape",
+      "avoid-template"
+    ],
+    "no-console": false
+  }
 }
