@@ -8,14 +8,14 @@ Ishtar used to solely be a Back-end service meant to power other EVE Online appl
 ```
 npm install
 ```
-#### *Development* mode:
+#### *Development* mode(With hot-reloading):
 ```
 npm run dev
 ```
 
 #### *Production* mode:
 ```
-npm run prod
+npm start
 ```
 
 License
