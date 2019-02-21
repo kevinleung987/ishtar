@@ -8,6 +8,7 @@ Ishtar used to solely be a Back-end service meant to power other EVE Online appl
 ```
 npm install
 ```
+
 #### *Development* mode(With hot-reloading):
 ```
 npm run dev
@@ -16,6 +17,11 @@ npm run dev
 #### *Production* mode:
 ```
 npm start
+```
+
+### Deploying to Heroku:
+```
+npm run deploy
 ```
 
 License
