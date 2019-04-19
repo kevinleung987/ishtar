@@ -4,11 +4,10 @@
   "description": "Dockerized Full-Stack EVE Online Discord Bot.",
   "license": "MIT",
   "repository": "https://github.com/kevinleung987/ishtar",
-  "main": "src/index.js",
   "scripts": {
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node build/server/index.js",
     "build": "rm -rf build/ && tsc && npm run build:web",
-    "build:web": "cp -rf web/public build/",
+    "build:web": "cp -rf web/public build/server/",
     "watch:server": "nodemon -e js --watch build ./build/index.js",
     "watch:web": "nodemon -e ts,html,css --watch web --exec \"npm run build:web\"",
     "dev": "concurrently -k \"tsc -w\" \"npm run watch:server\" \"npm run watch:web\"",

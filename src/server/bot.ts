@@ -1,4 +1,4 @@
-/** Entry Point for Discord Bot */
+/** Discord Bot Module */
 import { Client } from 'discord.js';
 import { config } from 'dotenv';
 
