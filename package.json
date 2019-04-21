@@ -7,9 +7,9 @@
   "scripts": {
     "start": "npm run build && node build/server/index.js",
     "build": "rm -rf build/ && tsc && npm run build:web",
-    "build:web": "cp -rf web/public build/server/",
+    "build:web": "cd web && npm run build && cd .. && cp -rf web/build build/server/public",
     "watch:server": "nodemon -e js --watch build ./build/index.js",
-    "watch:web": "nodemon -e ts,html,css --watch web --exec \"npm run build:web\"",
+    "watch:web": "cd web && npm run start && cd ..",
     "dev": "concurrently -k \"tsc -w\" \"npm run watch:server\" \"npm run watch:web\"",
     "deploy": "heroku container:push web && heroku container:release web"
   },
